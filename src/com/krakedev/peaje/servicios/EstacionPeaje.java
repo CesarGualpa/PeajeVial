@@ -79,4 +79,34 @@ public class EstacionPeaje {
 		
 	}
 	
+	public boolean cobrarPeaje(Vehiculo vehiculo) {
+		
+		double tarifa;
+		
+		if(vehiculo.getTipo().equals("L")) {
+			tarifa = tarifaLiviano;
+		}else if(vehiculo.getTipo().equals("P")) {
+			tarifa = tarifaPesado;
+		}else {
+			return false;
+		}
+		
+		TagElectronico tag;
+		tag = vehiculo.getTag();
+		
+		if(tag.getSaldo() >= tarifa) {
+			
+			double nuevoSaldo;
+			nuevoSaldo = tag.getSaldo() - tarifa;
+			
+			tag.setSaldo(nuevoSaldo);
+			
+			return true;
+			
+		}else {
+			return false;
+		}
+		
+	}
+	
 }
