@@ -109,4 +109,25 @@ public class EstacionPeaje {
 		
 	}
 	
+	public boolean transferirSaldoTag(double monto, TagElectronico origen, TagElectronico destino) {
+		
+		if(ValidadorUtil.esMontoValido(monto) && origen.getSaldo() >= monto) {
+			
+			double nuevoSaldoOrigen;
+			nuevoSaldoOrigen = origen.getSaldo() - monto;
+			
+			double nuevoSaldoDestino;
+			nuevoSaldoDestino = destino.getSaldo() + monto;
+			
+			origen.setSaldo(nuevoSaldoOrigen);
+			destino.setSaldo(nuevoSaldoDestino);
+			
+			return true;
+			
+		}else {
+			return false;
+		}
+		
+	}
+	
 }
