@@ -62,4 +62,21 @@ public class EstacionPeaje {
 		
 	}
 	
+	public boolean recargarTag(double monto, TagElectronico tag) {
+		
+		if(ValidadorUtil.esMontoValido(monto)) {
+			
+			double nuevoSaldo;
+			nuevoSaldo = tag.getSaldo() + monto;
+			
+			tag.setSaldo(nuevoSaldo);
+			
+			return true;
+			
+		}else {
+			return false;
+		}
+		
+	}
+	
 }
